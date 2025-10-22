@@ -105,7 +105,7 @@ export default function Sidebar() {
             <p className="text-sm font-medium">{user.name}</p>
             <p className="text-xs text-gray-400">{user.role}</p>
             <a
-              href="#"
+              href="/signout"
               className="text-xs text-gray-300 hover:text-orange-500 transition duration-150 ease-in-out mt-1"
             >
               Sign Out
