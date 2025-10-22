@@ -1,5 +1,6 @@
+"use client";
 // pages/reports.tsx
-import React from "react";
+import React, { use } from "react";
 import Sidebar from "../components/Sidebar";
 import ReportKpiCard from "../components/ReportKpiCard";
 import AvailableReportCard from "../components/AvailableReportCard";
@@ -85,7 +86,7 @@ const recentActivity: RecentActivity[] = [
     reportName: "Executive Summary Report",
     action: "downloaded",
     timeAgo: "2 hours ago",
-    actor: "Bonae Ineza",
+    actor: "Rachel Niyonagize",
     icon: ArrowDownTrayIcon,
     iconClass: "bg-blue-500",
   },
@@ -101,7 +102,7 @@ const recentActivity: RecentActivity[] = [
     reportName: "Custom report",
     action: "created",
     timeAgo: "3 days ago",
-    actor: "Bonae Ineza",
+    actor: "Rachel Niyonagize",
     icon: DocumentPlusIcon,
     iconClass: "bg-orange-500",
   },
@@ -129,11 +130,13 @@ const ExecutiveReportsPage: React.FC = () => {
               <DocumentMagnifyingGlassIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
             </button>
             <div className="text-right">
-              <p className="text-sm font-semibold text-gray-900">Bonae Ineza</p>
+              <p className="text-sm font-semibold text-gray-900">
+                Rachel Niyonagize
+              </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
             <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
-              BI
+              RN
             </div>
           </div>
         </header>

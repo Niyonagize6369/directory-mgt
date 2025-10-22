@@ -1,3 +1,4 @@
+"use client";
 // pages/approved.tsx
 import React, { Key } from "react";
 
@@ -64,35 +65,35 @@ const requestedItems2: RequestedItem[] = [
 ];
 
 const historyRequisitions: ApprovedRequisition[] = [
-//   {
-//     id: "REQ-2025-001",
-//     priority: "HIGH PRIORITY",
-//     status: "In Procurement",
-//     department: "Diamond Cutting Department",
-//     submitter: "Bonae Ineza - Cutting Supervisor", // Original submitter
-//     requestedBy: "James Thompson",
-//     approvedDate: "2023-01-15",
-//     approvedBy: "Operations Director, Managing Director",
-//     risk: "Production stoppage risk",
-//     totalValue: 14100,
-//     itemsCount: 2,
-//     requestedItems: requestedItems1,
-//   },
-//   {
-//     id: "REQ-2025-002",
-//     priority: "MEDIUM PRIORITY",
-//     status: "Delivered",
-//     department: "Gold Processing Unit",
-//     submitter: "A. Bonae Ineza - Processing Lead",
-//     requestedBy: "Sarah Mitchell",
-//     approvedDate: "2023-01-14",
-//     approvedBy: "Operations Director, Managing Director",
-//     deliveredDate: "2023-01-16",
-//     risk: "Standard procurement",
-//     totalValue: 6300,
-//     itemsCount: 2,
-//     requestedItems: requestedItems2,
-//   },
+  //   {
+  //     id: "REQ-2025-001",
+  //     priority: "HIGH PRIORITY",
+  //     status: "In Procurement",
+  //     department: "Diamond Cutting Department",
+  //     submitter: "Rachel Niyonagize - Cutting Supervisor", // Original submitter
+  //     requestedBy: "James Thompson",
+  //     approvedDate: "2023-01-15",
+  //     approvedBy: "Operations Director, Managing Director",
+  //     risk: "Production stoppage risk",
+  //     totalValue: 14100,
+  //     itemsCount: 2,
+  //     requestedItems: requestedItems1,
+  //   },
+  //   {
+  //     id: "REQ-2025-002",
+  //     priority: "MEDIUM PRIORITY",
+  //     status: "Delivered",
+  //     department: "Gold Processing Unit",
+  //     submitter: "A. Rachel Niyonagize - Processing Lead",
+  //     requestedBy: "Sarah Mitchell",
+  //     approvedDate: "2023-01-14",
+  //     approvedBy: "Operations Director, Managing Director",
+  //     deliveredDate: "2023-01-16",
+  //     risk: "Standard procurement",
+  //     totalValue: 6300,
+  //     itemsCount: 2,
+  //     requestedItems: requestedItems2,
+  //   },
   // ... (add more requisitions if needed)
 ];
 
@@ -117,11 +118,13 @@ const ApprovedRequisitionsPage: React.FC = () => {
               <DocumentTextIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
             </button>
             <div className="text-right">
-              <p className="text-sm font-semibold text-gray-900">Bonae Ineza</p>
+              <p className="text-sm font-semibold text-gray-900">
+                Rachel Niyonagize
+              </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
             <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
-              BI
+              RN
             </div>
           </div>
         </header>

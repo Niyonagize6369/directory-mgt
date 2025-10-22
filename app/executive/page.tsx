@@ -1,3 +1,4 @@
+"use client";
 // pages/executive.tsx
 import React from "react";
 import Sidebar from "../components/Sidebar";
@@ -114,11 +115,13 @@ const ExecutiveDashboardPage: React.FC = () => {
               <BellIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
             </button>
             <div className="text-right">
-              <p className="text-sm font-semibold text-gray-900">Bonae Ineza</p>
+              <p className="text-sm font-semibold text-gray-900">
+                Rachel Niyonagize
+              </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
             <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
-              BI
+              RN
             </div>
           </div>
         </header>

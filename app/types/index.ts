@@ -117,7 +117,7 @@ export interface RecentActivity {
     reportName: string;
     action: 'downloaded' | 'generated' | 'created';
     timeAgo: string;
-    actor: 'Bonae Ineza' | 'System';
+    actor: 'Rachel Niyonagize' | 'System';
     icon: HeroIcon;
     iconClass: string;
 }
@@ -126,4 +126,24 @@ export interface RecentActivity {
 export interface QuickAction {
     label: string;
     icon: HeroIcon;
+}
+
+// types/index.ts (Additions for Profile Settings)
+
+// 14. User Profile Settings Type
+export interface UserSettings {
+    fullName: string;
+    jobTitle: string;
+    email: string;
+    phoneNumber: string;
+    defaultCurrency: string;
+    theme: 'light' | 'dark';
+    twoFactorEnabled: boolean;
+}
+
+// 15. Settings Section Type
+export interface SettingsSection {
+    id: string;
+    title: string;
+    description: string;
 }

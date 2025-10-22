@@ -46,12 +46,12 @@ const navItems: NavItem[] = [
     icon: CogIcon,
     current: false,
     subtext: "Account Settings",
-    href: "#",
+    href: "/profile",
   },
 ];
 
 export default function Sidebar() {
-  const user = { name: "Bonae Ineza", role: "Managing Director" };
+  const user = { name: "Rachel Niyonagize", role: "Managing Director" };
 
   return (
     // **LAYOUT:** h-screen and flex-col for full-height column layout
@@ -99,7 +99,7 @@ export default function Sidebar() {
       <div className="p-4 border-t border-gray-700">
         <div className="flex items-start space-x-3">
           <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
-            BI
+            RN
           </div>
           <div className="flex flex-col text-left">
             <p className="text-sm font-medium">{user.name}</p>
