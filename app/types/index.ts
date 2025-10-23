@@ -147,3 +147,16 @@ export interface SettingsSection {
     title: string;
     description: string;
 }
+// types/index.ts (Additions for Create Custom Report)
+
+// 16. Custom Report Form State Type
+export interface CustomReportForm {
+    reportName: string;
+    description: string;
+    dataSources: string[];
+    dateRange: 'LAST_30_DAYS' | 'LAST_6_MONTHS' | 'CUSTOM';
+    metrics: string[];
+    groupBy: string;
+    format: 'PDF' | 'Excel' | 'CSV';
+    schedule: 'NONE' | 'DAILY' | 'WEEKLY' | 'MONTHLY';
+}

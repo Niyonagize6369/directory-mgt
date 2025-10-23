@@ -58,7 +58,7 @@ export default function Sidebar() {
     <div className="flex flex-col w-64 bg-gray-800 text-white h-screen sticky top-0">
       {/* Logo */}
       <div className="p-4 flex items-center border-b border-gray-700">
-        <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center font-bold mr-2">
+        <div className="w-8 h-8 bg-yellow-500 rounded flex items-center justify-center font-bold mr-2">
           <Gem size={24} strokeWidth={2} />
         </div>
         <span className="text-xl font-semibold">NGALI MINING</span>
@@ -76,8 +76,8 @@ export default function Sidebar() {
             href={item.href}
             className={`flex flex-col p-3 rounded-lg transition duration-150 ease-in-out ${
               item.current
-                ? "hover:bg-orange-500 text-white"
-                : "text-gray-300 hover:bg-orange-500 hover:text-white cursor-pointer"
+                ? "hover:bg-yellow-500 text-white"
+                : "text-gray-300 hover:bg-yellow-500 hover:text-white cursor-pointer"
             }`}
           >
             <div className="flex items-center">
@@ -98,7 +98,7 @@ export default function Sidebar() {
       {/* FINAL CORRECTED User Profile / Sign Out Block: Pushed to the bottom */}
       <div className="p-4 border-t border-gray-700">
         <div className="flex items-start space-x-3">
-          <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+          <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
             RN
           </div>
           <div className="flex flex-col text-left">
@@ -106,7 +106,7 @@ export default function Sidebar() {
             <p className="text-xs text-gray-400">{user.role}</p>
             <a
               href="/signout"
-              className="text-xs text-gray-300 hover:text-orange-500 transition duration-150 ease-in-out mt-1"
+              className="text-xs text-gray-300 hover:text-yellow-500 transition duration-150 ease-in-out mt-1"
             >
               Sign Out
             </a>

@@ -94,7 +94,7 @@ const ProfileSettingsPage: React.FC = () => {
               </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
-            <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
               RN
             </div>
           </div>
@@ -120,7 +120,7 @@ const ProfileSettingsPage: React.FC = () => {
               description={settingsSections[0].description}
             >
               <div className="flex items-center space-x-6 mb-8">
-                <div className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+                <div className="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg">
                   RN
                 </div>
                 <div>
@@ -188,7 +188,7 @@ const ProfileSettingsPage: React.FC = () => {
                 </label>
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition duration-150">
+                <button className="px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150">
                   Save Changes
                 </button>
               </div>
@@ -245,7 +245,7 @@ const ProfileSettingsPage: React.FC = () => {
                 </label>
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition duration-150">
+                <button className="px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150">
                   Update Password
                 </button>
               </div>
@@ -323,7 +323,7 @@ const ProfileSettingsPage: React.FC = () => {
                 </label>
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition duration-150">
+                <button className="px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150">
                   Save Preferences
                 </button>
               </div>

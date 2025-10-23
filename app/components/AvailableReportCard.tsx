@@ -42,7 +42,7 @@ export default function AvailableReportCard({
         <button className="text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-1">
           Preview
         </button>
-        <button className="flex items-center px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition duration-150 shadow-md">
+        <button className="flex items-center px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
           <ArrowDownTrayIcon className="w-4 h-4 mr-2" /> Download
         </button>
       </div>

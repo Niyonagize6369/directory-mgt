@@ -120,7 +120,7 @@ const ExecutiveDashboardPage: React.FC = () => {
               </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
-            <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
               RN
             </div>
           </div>
@@ -151,7 +151,7 @@ const ExecutiveDashboardPage: React.FC = () => {
             <div className="lg:col-span-2">
               <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
                 <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center">
-                  <span className="inline-block w-2 h-2 mr-2 rounded-full bg-orange-500"></span>
+                  <span className="inline-block w-2 h-2 mr-2 rounded-full bg-yellow-500"></span>
                   Executive Approvals Required
                 </h2>
                 <p className="text-gray-500 text-sm mb-6">

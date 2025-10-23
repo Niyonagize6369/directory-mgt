@@ -123,7 +123,7 @@ const ApprovedRequisitionsPage: React.FC = () => {
               </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
-            <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
               RN
             </div>
           </div>

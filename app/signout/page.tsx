@@ -26,7 +26,7 @@ const SignOutPage: React.FC = () => {
       {/* Top Header/Navbar - Simplified header without user info, as user is 'signed out' or signing out */}
       <header className="flex justify-between items-center px-8 py-4 bg-white shadow-sm">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center font-bold mr-2 text-white">
+          <div className="w-8 h-8 bg-yellow-500 rounded flex items-center justify-center font-bold mr-2 text-white">
             N
           </div>
           <span className="text-xl font-semibold text-gray-900">
@@ -61,7 +61,7 @@ const SignOutPage: React.FC = () => {
             <button
               // In a real app, this would be a Next.js <Link href="/login">
               onClick={() => (window.location.href = "/login")}
-              className="w-full flex items-center justify-center px-4 py-3 text-lg font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition duration-150 shadow-md"
+              className="w-full flex items-center justify-center px-4 py-3 text-lg font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md"
             >
               <UserIcon className="w-5 h-5 mr-2" /> Log In Again
             </button>

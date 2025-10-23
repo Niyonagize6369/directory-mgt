@@ -104,7 +104,7 @@ const recentActivity: RecentActivity[] = [
     timeAgo: "3 days ago",
     actor: "Rachel Niyonagize",
     icon: DocumentPlusIcon,
-    iconClass: "bg-orange-500",
+    iconClass: "bg-yellow-500",
   },
 ];
 
@@ -135,7 +135,7 @@ const ExecutiveReportsPage: React.FC = () => {
               </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
-            <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
               RN
             </div>
           </div>
@@ -154,9 +154,12 @@ const ExecutiveReportsPage: React.FC = () => {
                 dashboards
               </p>
             </div>
-            <button className="flex items-center px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition duration-150 shadow-md">
-              <DocumentPlusIcon className="w-4 h-4 mr-2" /> Create Custom Report
-            </button>
+            <a href="/create-report">
+              <button className="flex items-center px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
+                <DocumentPlusIcon className="w-4 h-4 mr-2" /> Create Custom
+                Report
+              </button>
+            </a>
           </div>
 
           {/* KPI Cards */}
