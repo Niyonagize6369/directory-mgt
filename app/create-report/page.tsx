@@ -238,89 +238,6 @@ const CreateCustomReportPage: React.FC = () => {
               </label>
             </SettingsSectionCard>
 
-            {/* Section 2: Data Scope (Metrics and Grouping) */}
-            <SettingsSectionCard
-              title="Data Scope & Metrics"
-              description="Select the date range, key metrics, and grouping for the report data."
-            >
-              {/* Date Range */}
-              <h4 className="text-lg font-semibold text-gray-700 mb-3">
-                Date Range
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                {" "}
-                {/* Responsive grid */}
-                {["LAST_30_DAYS", "LAST_6_MONTHS", "CUSTOM"].map((range) => (
-                  <button
-                    key={range}
-                    type="button"
-                    onClick={() =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        dateRange: range as
-                          | "LAST_30_DAYS"
-                          | "LAST_6_MONTHS"
-                          | "CUSTOM",
-                      }))
-                    }
-                    className={`px-4 py-3 text-sm font-medium rounded-lg transition duration-150 border ${
-                      formData.dateRange === range
-                        ? "bg-blue-600 text-white border-blue-600 shadow-md"
-                        : "bg-gray-50 text-gray-700 border-gray-300 hover:bg-gray-100"
-                    }`}
-                  >
-                    {range.replace(/_/g, " ")}
-                  </button>
-                ))}
-              </div>
-
-              {/* Key Metrics */}
-              <h4 className="text-lg font-semibold text-gray-700 mb-3">
-                Key Metrics <span className="text-red-500">*</span>
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                {" "}
-                {/* Responsive grid */}
-                {availableMetrics.map((metric) => (
-                  <label
-                    key={metric}
-                    className="flex items-center space-x-2 cursor-pointer bg-gray-50 p-3 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={formData.metrics.includes(metric)}
-                      onChange={(e) =>
-                        handleMetricChange(metric, e.target.checked)
-                      }
-                      className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                    />
-                    <span className="text-sm font-medium text-gray-700">
-                      {metric}
-                    </span>
-                  </label>
-                ))}
-              </div>
-
-              {/* Group By */}
-              <label className="block">
-                <span className="text-sm font-medium text-gray-700 block mb-1">
-                  Group By
-                </span>
-                <select
-                  name="groupBy"
-                  value={formData.groupBy}
-                  onChange={handleInputChange}
-                  className="block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500"
-                >
-                  {availableGroups.map((group) => (
-                    <option key={group} value={group}>
-                      {group}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </SettingsSectionCard>
-
             {/* Section 3: Output & Delivery (from Step 3) */}
             <SettingsSectionCard
               title="Output & Delivery"
@@ -353,38 +270,6 @@ const CreateCustomReportPage: React.FC = () => {
                   </button>
                 ))}
               </div>
-
-              {/* Schedule */}
-              <h4 className="text-lg font-semibold text-gray-700 mb-3">
-                Report Schedule
-              </h4>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {" "}
-                {/* Responsive grid */}
-                {availableSchedules.map((schedule) => (
-                  <button
-                    key={schedule}
-                    type="button"
-                    onClick={() =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        schedule: schedule as
-                          | "NONE"
-                          | "DAILY"
-                          | "WEEKLY"
-                          | "MONTHLY",
-                      }))
-                    }
-                    className={`px-4 py-3 text-sm font-medium rounded-lg transition duration-150 border ${
-                      formData.schedule === schedule
-                        ? "bg-blue-600 text-white border-blue-600 shadow-md"
-                        : "bg-gray-50 text-gray-700 border-gray-300 hover:bg-gray-100"
-                    }`}
-                  >
-                    {schedule}
-                  </button>
-                ))}
-              </div>
             </SettingsSectionCard>
 
             {/* Submit Button (outside the cards but inside the form) */}
@@ -400,7 +285,7 @@ const CreateCustomReportPage: React.FC = () => {
                     : "bg-green-400 cursor-not-allowed"
                 }`}
               >
-                <CheckCircleIcon className="w-5 h-5 mr-2 inline" /> Generate
+                <CheckCircleIcon className="w-5 h-5 mr-2 inline" /> create
                 Report Now
               </button>
             </div>
