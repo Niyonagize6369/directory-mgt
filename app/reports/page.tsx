@@ -1,6 +1,6 @@
 "use client";
 // pages/reports.tsx
-import React, { use } from "react";
+import React, { useState } from "react"; // FIX 1: Import useState
 import Sidebar from "../components/Sidebar";
 import ReportKpiCard from "../components/ReportKpiCard";
 import AvailableReportCard from "../components/AvailableReportCard";
@@ -25,6 +25,10 @@ import {
   ArrowTrendingUpIcon,
   DocumentArrowDownIcon,
   DocumentPlusIcon,
+  MagnifyingGlassIcon,
+  BellIcon,
+  Bars3Icon, // FIX 2: Added missing icon import for mobile menu
+  XMarkIcon, // FIX 3: Added missing icon import for mobile menu close
 } from "@heroicons/react/24/outline";
 import {
   DocumentMagnifyingGlassIcon,
@@ -34,7 +38,7 @@ import {
   CheckCircleIcon,
 } from "@heroicons/react/24/solid";
 
-// --- Data Definitions ---
+// --- Data Definitions (Remain Unchanged) ---
 
 const reportKpiData: ReportKpi[] = [
   {
@@ -111,70 +115,101 @@ const recentActivity: RecentActivity[] = [
 // --- Component ---
 
 const ExecutiveReportsPage: React.FC = () => {
+  // FIX 4: State and Toggler for mobile sidebar functionality
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* The Sidebar component should be configured to highlight 'Reports' */}
-      <Sidebar />
+      {/* FIX 5: Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 md:hidden bg-black bg-opacity-50"
+          onClick={toggleSidebar}
+        ></div>
+      )}
+
+      {/* FIX 6: Sidebar Container - Conditional visibility and position for responsiveness */}
+      <div
+        className={`fixed inset-y-0 left-0 z-50 w-64 transform transition duration-300 ease-in-out ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full" // Use ONLY translate to hide/show on mobile
+        } md:translate-x-0 md:relative md:flex`} // Always visible/relative on desktop
+      >
+        {/* The Sidebar component should be configured to highlight 'Reports' */}
+        <Sidebar />
+      </div>
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Header/Navbar - Same as previous pages */}
-        <header className="flex justify-end items-center px-8 py-4 bg-white shadow-sm">
-          <div className="grow"></div>
-          <div className="flex items-center space-x-6">
-            <button>
-              <Bars3CenterLeftIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
+        {/* Top Header/Navbar - Added responsive classes */}
+        <header className="flex justify-between md:justify-end items-center px-4 md:px-8 py-4 bg-white shadow-sm">
+          {/* FIX 7: Mobile Menu Button */}
+          <button onClick={toggleSidebar} className="md:hidden">
+            {isSidebarOpen ? (
+              <XMarkIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
+            ) : (
+              <Bars3Icon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
+            )}
+          </button>
+
+          <div className="hidden md:block flex-grow"></div>
+
+          <div className="flex items-center space-x-4 md:space-x-6">
+            <button className="hidden sm:block">
+              {" "}
+              {/* Hide on very small screens */}
+              <DocumentMagnifyingGlassIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
             </button>
             <button className="relative">
               <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
-              <DocumentMagnifyingGlassIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
+              <BellIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
             </button>
-            <div className="text-right">
+            <div className="hidden sm:block text-right">
               <p className="text-sm font-semibold text-gray-900">
                 Rachel Niyonagize
               </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
-            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white flex-shrink-0">
               RN
             </div>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-8 overflow-y-auto">
-          {/* Title Section */}
-          <div className="flex justify-between items-start mb-8">
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+          {/* Title Section - Stack on mobile */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 md:mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                 Executive Reports
               </h1>
-              <p className="text-gray-500 mt-1">
+              <p className="text-sm md:text-base text-gray-500 mt-1">
                 Strategic overview, financial summaries, and executive
                 dashboards
               </p>
             </div>
-            <a href="/create-report">
-              <button className="flex items-center px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
+            <a href="/create-report" className="mt-4 sm:mt-0">
+              <button className="w-full sm:w-auto flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md">
                 <DocumentPlusIcon className="w-4 h-4 mr-2" /> Create Custom
                 Report
               </button>
             </a>
           </div>
 
-          {/* KPI Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          {/* KPI Cards - Already responsive with sm:grid-cols-2 lg:grid-cols-4 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-10">
             {reportKpiData.map((data, index) => (
               <ReportKpiCard key={index} {...data} />
             ))}
           </div>
 
-          {/* Reports and Activity Sections */}
+          {/* Reports and Activity Sections - Stack on mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Left Column: Available Reports */}
+            {/* Left Column: Available Reports (Takes full width on mobile) */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-xl shadow-lg mb-6">
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <h2 className="text-xl font-semibold text-gray-800">
                     Available Reports
                   </h2>
@@ -186,16 +221,17 @@ const ExecutiveReportsPage: React.FC = () => {
                 {/* Reports List */}
                 <div className="divide-y divide-gray-100">
                   {availableReports.map((report, index) => (
+                    // NOTE: AvailableReportCard must handle internal responsiveness
                     <AvailableReportCard key={index} report={report} />
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Quick Actions & Recent Activity */}
+            {/* Right Column: Quick Actions & Recent Activity (Stacks below reports on mobile) */}
             <div className="lg:col-span-1 space-y-6">
               {/* Quick Actions */}
-              <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">
                   Quick Actions
                 </h2>
@@ -203,7 +239,7 @@ const ExecutiveReportsPage: React.FC = () => {
                   {quickActions.map((action, index) => (
                     <button
                       key={index}
-                      className="w-full flex items-center px-4 py-3 text-sm font-medium text-gray-700 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-150"
+                      className="w-full flex items-center justify-center sm:justify-start px-4 py-3 text-sm font-medium text-gray-700 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-150"
                     >
                       <action.icon className="w-5 h-5 mr-3 text-gray-500" />
                       {action.label}
@@ -213,7 +249,7 @@ const ExecutiveReportsPage: React.FC = () => {
               </div>
 
               {/* Recent Activity */}
-              <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">
                   Recent Activity
                 </h2>

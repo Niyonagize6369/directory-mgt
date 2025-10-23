@@ -1,5 +1,6 @@
+"use client"; // Required for using useState and mobile interactions
 // pages/index.tsx
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "@/app/components/Sidebar";
 import MetricCard from "@/app/components/metricCard";
 import RequisitionCard from "@/app/components/RequisitionaCard";
@@ -13,6 +14,8 @@ import {
   CheckCircleIcon,
   MagnifyingGlassIcon,
   BellIcon,
+  Bars3Icon, // Added for mobile menu
+  XMarkIcon, // Added for mobile menu close
 } from "@heroicons/react/24/outline";
 
 const metricData: MetricData[] = [
@@ -78,50 +81,88 @@ const requisitions: Requisition[] = [
 ];
 
 const PendingApprovalsPage: React.FC = () => {
+  // FIX 1: Sidebar State and Toggler for functionality
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
   return (
     <div className="flex min-h-screen bg-gray-50">
-      <Sidebar />
+      {/* FIX 2: Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 md:hidden bg-black bg-opacity-50"
+          onClick={toggleSidebar}
+        ></div>
+      )}
+
+      {/* FIX 3: Sidebar Container - Conditional visibility and position for responsiveness */}
+      <div
+        className={`fixed inset-y-0 left-0 z-50 transform transition duration-300 ease-in-out ${
+          isSidebarOpen ? "translate-x-0 flex" : "-translate-x-full hidden" // Show/Hide on mobile
+        } md:translate-x-0 md:relative md:flex`} // Always visible/relative on desktop
+      >
+        <Sidebar />
+      </div>
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Header/Navbar */}
-        <header className="flex justify-between items-center px-8 py-4 bg-white shadow-sm">
-          {/* Left space for logo/search if needed, but keeping it empty for this design */}
-          <div className="grow"></div>
-          <div className="flex items-center space-x-6">
-            <button>
+        {/* Top Header/Navbar - Added justify-between for mobile, adjusted padding */}
+        <header className="flex justify-between md:justify-end items-center px-4 md:px-8 py-4 bg-white shadow-sm">
+          {/* FIX 4: Mobile Menu Button */}
+          <button onClick={toggleSidebar} className="md:hidden">
+            {isSidebarOpen ? (
+              <XMarkIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
+            ) : (
+              <Bars3Icon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
+            )}
+          </button>
+          <div className="hidden md:block flex-grow"></div>{" "}
+          {/* Hidden on mobile */}
+          <div className="flex items-center space-x-4 md:space-x-6">
+            {" "}
+            {/* Adjusted spacing */}
+            {/* Search (Hidden on tiny screens) */}
+            <button className="hidden sm:block">
               <MagnifyingGlassIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
             </button>
+            {/* Bell Icon */}
             <button className="relative">
               <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
               <BellIcon className="w-6 h-6 text-gray-600 hover:text-gray-900" />
             </button>
-            <div className="text-right">
+            {/* User Info (Hidden on small screens) */}
+            <div className="hidden sm:block text-right">
               <p className="text-sm font-semibold text-gray-900">
                 Rachel Niyonagize
               </p>
               <p className="text-xs text-gray-500">Managing Director</p>
             </div>
-            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
+            {/* User Avatar (Visible on all) */}
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-lg text-white flex-shrink-0">
               RN
             </div>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-8 overflow-y-auto">
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+          {" "}
+          {/* Adjusted padding for mobile */}
           {/* Title Section */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">
+          <div className="mb-6 md:mb-8">
+            {" "}
+            {/* Adjusted margin for mobile */}
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
               Pending Approvals
             </h1>
-            <p className="text-gray-500 mt-1">
+            <p className="text-sm md:text-base text-gray-500 mt-1">
               Requisitions requiring operations review and approval
             </p>
           </div>
-
-          {/* Metric Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          {/* Metric Cards - Already responsive with sm:grid-cols-2 lg:grid-cols-4 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-10">
+            {" "}
+            {/* Adjusted gap and margin */}
             {metricData.map((data, index) => (
               <MetricCard
                 key={index}
@@ -132,16 +173,16 @@ const PendingApprovalsPage: React.FC = () => {
               />
             ))}
           </div>
-
           {/* Requisitions List */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
+            {" "}
+            {/* Adjusted padding */}
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
               Requisitions Awaiting Your Approval
             </h2>
             <p className="text-gray-500 text-sm mb-6">
               Review details and provide digital signature for approval
             </p>
-
             <div className="space-y-6">
               {requisitions.map((req) => (
                 <RequisitionCard key={req.id} requisition={req} />
